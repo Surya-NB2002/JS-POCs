@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #container {
+            margin-top: 20px;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>DOM Manipulation Demo</h1>
+    <button id="addElementBtn">Add Element</button>
+    <button id="removeElementBtn">Remove Element</button>
+    <button id="modifyTextBtn">Modify Text</button>
+    <button id="toggleClassBtn">Toggle Class</button>
+    <div id="container"></div>
+
+    <script>
+        const container = document.getElementById('container');
+
+        // DOM manipulation using button clicks
+        document.getElementById('addElementBtn').onclick = function() {
+            const newElement = document.createElement('p');
+            newElement.textContent = 'New element added!';
+            container.appendChild(newElement);
+        };
+
+        document.getElementById('removeElementBtn').onclick = function() {
+            if (container.lastChild) {
+                container.removeChild(container.lastChild);
+            }
+        };
+
+        document.getElementById('modifyTextBtn').onclick = function() {
+            if (container.firstChild) {
+                container.firstChild.textContent = 'Text modified!';
+            }
+        };
+
+        document.getElementById('toggleClassBtn').onclick = function() {
+            container.classList.toggle('highlight');
+        };
+
+        // Other DOM manipulations
+        const div = document.createElement('div');
+        div.setAttribute('id', 'info');
+        div.textContent = 'Additional information:';
+        container.appendChild(div);
+
+        const span = document.createElement('span');
+        span.textContent = ' This is a span element.';
+        div.appendChild(span);
+
+        const anchor = document.createElement('a');
+        anchor.setAttribute('href', '#');
+        anchor.textContent = ' Click me!';
+        div.appendChild(anchor);
+
+        anchor.onclick = function() {
+            alert('a tag clicked!');
+        };
+
+        // manipulating styles using DOM
+        div.style.color = 'blue';
+        div.style.fontSize = '18px';
+    </script>
+</body>
+</html>
